@@ -1,0 +1,49 @@
+// Implement the selection sort algrothim to sort an array of 10 integers numbers showing all the intermediate steps:
+// 35, 25, 15, 5, 14,18,16,13, 17, 19 
+//How many times will the inner loop execute and number of key compariosns required.
+
+#include<stdio.h>
+
+int main(){
+    int arr[10] = {35, 25, 15, 5, 14,18,16,13, 17, 19};
+    int n=10;
+    int innerLoopCount = 0;
+    int CompareOut = 0;
+    
+    // Print the original array
+    
+    printf("Orignal array: \n");
+    for(int i = 0; i<n; i++){
+        printf("%d", arr[i]);
+    }
+    printf("\n");
+    
+    //selection sort with intermediate steps
+    for(int i = 0; i < n -1; i++){
+        int minIndex = i;
+        for(int j =i+1; j< n ; j++){
+            CompareOut++;
+            if(arr[j] < arr[minIndex]){
+                minIndex = j;
+            }
+            innerLoopCount++;
+        }
+        //swap the found minium element with the first elemeent
+        int temp = arr[minIndex];
+        arr[minIndex] = arr[i];
+        arr[i] = temp;
+    }
+    //print the sorted array 
+    printf("Sorted array : \n");
+     for(int i = 0; i<n; i++){
+        printf("%d", arr[i]);
+    }
+    printf("\n");
+    
+    //print loop and comparison loops
+    printf("Inner loop exceuted %d times \n ", innerLoopCount);
+    printf("Number of compariosn: %d\n", CompareOut);
+    
+    return 0;
+    
+}
